@@ -17,8 +17,9 @@ class StaffServiceImpl(private val staffRepository: StaffRepository) : StaffServ
 
     @Transactional
     override fun update(id: Int, staff: StaffEntity): StaffEntity {
-        check(staffRepository.existsById(id))
-        val normalizedStaff = staff.copy(id = id)
+        val existing = staffRepository.findByIdOrNull(id)
+        check(existing != null)
+        val normalizedStaff = staff.copy(id = id, dateCreated = existing.dateCreated)
         return staffRepository.save(normalizedStaff)
     }
 
