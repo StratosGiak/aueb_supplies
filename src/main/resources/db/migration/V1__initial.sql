@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS "order_statuses";
+CREATE TABLE "order_statuses" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "name" VARCHAR(25) NOT NULL
+);
+
+DROP TABLE IF EXISTS "orders";
+CREATE TABLE "orders" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "name" VARCHAR(50) NOT NULL,
+    "email" VARCHAR(50) NOT NULL,
+    "comments" VARCHAR(500) NOT NULL,
+    "date_created" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "status_id" INT REFERENCES order_statuses NOT NULL
+);
+
+DROP TABLE IF EXISTS "staff";
+CREATE TABLE "staff" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "username" VARCHAR(50) NOT NULL,
+    "password" VARCHAR(50) NOT NULL,
+    "email" VARCHAR(50) NOT NULL,
+    "date_created" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);

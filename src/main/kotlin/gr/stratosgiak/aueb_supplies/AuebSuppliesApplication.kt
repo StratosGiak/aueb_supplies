@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class AuebSuppliesApplication
 
 fun main(args: Array<String>) {
-	runApplication<AuebSuppliesApplication>(*args)
+    runApplication<AuebSuppliesApplication>(*args)
 }

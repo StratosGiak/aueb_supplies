@@ -1,0 +1,1 @@
+INSERT INTO order_statuses (name) VALUES ('STARTING'), ('PROCESSING'), ('COMPLETED')
